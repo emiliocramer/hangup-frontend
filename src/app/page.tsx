@@ -8,10 +8,10 @@ export default function App() {
                 <h1 className="text-4xl font-bold mb-6">Main Page</h1>
                 <div className="space-x-4">
                     <Link href="/twilio">
-                        <a className="bg-blue-500 text-white p-2 rounded">Add Twilio</a>
+                        <a className="bg-blue-500 text-white p-2 rounded">Create Account Using Twilio</a>
                     </Link>
                     <Link href="/manage">
-                        <a className="bg-green-500 text-white p-2 rounded">Manage</a>
+                        <a className="bg-green-500 text-white p-2 rounded">Manage Personal Profile</a>
                     </Link>
                 </div>
             </div>

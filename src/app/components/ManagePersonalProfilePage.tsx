@@ -2,7 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useAuth } from "@/app/context/AuthContext";
 import axios from 'axios';
 import Link from "next/link";
-import {useRouter} from "next/router";
+import {useRouter} from "next/navigation";
 
 export default function ManagePersonalProfilePage() {
     const { userId } = useAuth();

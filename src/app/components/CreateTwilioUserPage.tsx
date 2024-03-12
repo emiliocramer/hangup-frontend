@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from "@/app/context/AuthContext";
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 export default function CreateTwilioUserPage() {
     const [accountSid, setAccountSid] = useState('');
