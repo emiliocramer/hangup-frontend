@@ -17,12 +17,19 @@ export default function CreateTwilioUserPage() {
         setIsSubmitting(true);
         try {
             logout()
-            const response = await axios.post('http://localhost:5014/api/twilio/create-user', {
+            const createUserResponse = await axios.post('http://localhost:5014/api/twilio/create-user', {
                 account_sid: accountSid,
                 auth_token: authToken
             });
-            alert(response.data.message);
-            login(response.data.user_id);
+            const userId = createUserResponse.data.user_id;
+            await axios.post('http://localhost:5014/api/twilio/configure-phone', {
+                account_sid: accountSid,
+                auth_token: authToken,
+                user_id: userId
+            });
+            login(createUserResponse.data.user_id);
+
+            alert(createUserResponse.data.message);
             await router.push('/manage')
         } catch (err) {
             if (axios.isAxiosError(err)) {
