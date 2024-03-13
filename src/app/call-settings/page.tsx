@@ -1,9 +1,9 @@
 "use client";
 import dynamic from "next/dynamic";
-import Header from '@/app/components/Header';
+import Header from '@/app/components/body/Header';
 import {AuthProvider} from "@/app/context/AuthContext";
 
-const ManageCallSettingsPage = dynamic(() => import('@/app/components/ManageCallSettingsPage'), { ssr: false });
+const ManageCallSettingsPage = dynamic(() => import('@/app/components/call/ManageCallSettingsPage'), { ssr: false });
 
 export default function ManagePage() {
     return (

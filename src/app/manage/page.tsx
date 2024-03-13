@@ -1,9 +1,9 @@
 "use client";
 import dynamic from "next/dynamic";
-import Header from '@/app/components/Header';
+import Header from '@/app/components/body/Header';
 import {AuthProvider} from "@/app/context/AuthContext";
 
-const ManagePersonalProfilePage = dynamic(() => import('@/app/components/ManagePersonalProfilePage'), { ssr: false });
+const ManagePersonalProfilePage = dynamic(() => import('@/app/components/call/ManagePersonalProfilePage'), { ssr: false });
 
 export default function ManagePage() {
     return (

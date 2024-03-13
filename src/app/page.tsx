@@ -1,6 +1,6 @@
 import { AuthProvider } from '@/app/context/AuthContext';
 import Link from 'next/link';
-import Header from '@/app/components/Header';
+import Header from '@/app/components/body/Header';
 
 export default function App() {
     return (
