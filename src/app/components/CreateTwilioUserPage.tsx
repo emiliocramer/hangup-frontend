@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 export default function CreateTwilioUserPage() {
     const [accountSid, setAccountSid] = useState('');
     const [authToken, setAuthToken] = useState('');
-    const [isSubmitting, setIsSubmitting] = useState(false); // State to track form submission status
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
     const { login, logout } = useAuth();
     const router = useRouter();
@@ -17,12 +17,12 @@ export default function CreateTwilioUserPage() {
         setIsSubmitting(true);
         try {
             logout()
-            const createUserResponse = await axios.post('http://localhost:5014/api/twilio/create-user', {
+            const createUserResponse = await axios.post('https://hang-up-c98880200178.herokuapp.com/api/twilio/create-user', {
                 account_sid: accountSid,
                 auth_token: authToken
             });
             const userId = createUserResponse.data.user_id;
-            await axios.post('http://localhost:5014/api/twilio/configure-phone', {
+            await axios.post('https://hang-up-c98880200178.herokuapp.com/api/twilio/configure-phone', {
                 account_sid: accountSid,
                 auth_token: authToken,
                 user_id: userId
@@ -44,8 +44,8 @@ export default function CreateTwilioUserPage() {
     };
 
     return (
-        <div className="w-1/2 mx-auto mt-10">
-            <h1 className="text-center mb-4">Add a Twilio User</h1>
+        <div className="max-w-md bg-gray-800 mx-auto rounded-lg shadow-lg p-6">
+            <h1 className="text-2xl font-bold mb-4 text-center">Add a Twilio User</h1>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <input
                     className="w-full p-2 border border-gray-300 rounded-md text-black"
@@ -61,12 +61,18 @@ export default function CreateTwilioUserPage() {
                     value={authToken}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAuthToken(e.target.value)}
                 />
-                <button className="w-full p-2 bg-blue-500 text-white rounded-md" type="submit" disabled={isSubmitting}>Submit</button>
+                <button
+                    className="w-full p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                    type="submit"
+                    disabled={isSubmitting}
+                >
+                    Submit
+                </button>
             </form>
             {error && <p className="text-red-500 text-center mt-4">{error}</p>}
             <div className="mt-4 text-center">
                 <Link href="/">
-                    <a className="text-blue-500">Back to Home</a>
+                    <a className="text-blue-500 hover:text-blue-600">Back to Home</a>
                 </Link>
             </div>
         </div>

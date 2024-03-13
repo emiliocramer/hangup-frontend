@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import Header from '@/app/components/Header';
 import {AuthProvider} from "@/app/context/AuthContext";
 
-const ManagePersonalProfilePage = dynamic(() => import('@/app/components/ManagePersonalProfilePage'), { ssr: false });
+const ManageCallSettingsPage = dynamic(() => import('@/app/components/ManageCallSettingsPage'), { ssr: false });
 
 export default function ManagePage() {
     return (
@@ -11,10 +11,9 @@ export default function ManagePage() {
             <div className="min-h-screen bg-black">
                 <Header />
                 <main className="container mx-auto py-8 bg-black">
-                    <ManagePersonalProfilePage />
+                    <ManageCallSettingsPage />
                 </main>
             </div>
         </AuthProvider>
     );
 }
-

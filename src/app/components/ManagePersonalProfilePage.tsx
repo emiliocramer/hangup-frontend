@@ -19,7 +19,7 @@ export default function ManagePersonalProfilePage() {
 
     useEffect(() => {
         if (userId) {
-            axios.get(`http://localhost:5014/api/profile/${userId}`)
+            axios.get(`https://hang-up-c98880200178.herokuapp.com/api/profile/${userId}`)
                 .then(response => setProfile(response.data))
                 .catch(error => setError('Failed to fetch profile data'));
         }
@@ -42,7 +42,7 @@ export default function ManagePersonalProfilePage() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:5014/api/profile/${userId}`, profile);
+            await axios.put(`https://hang-up-c98880200178.herokuapp.com/api/profile/${userId}`, profile);
             await router.push('/')
         } catch (error) {
             setError('Failed to update profile');
@@ -61,9 +61,9 @@ export default function ManagePersonalProfilePage() {
     }
 
     return (
-        <div className="w-3/4 mx-auto mt-10">
+        <div className="max-w-2xl bg-gray-800 mx-auto rounded-lg shadow-lg p-6">
             <h1 className="text-2xl font-bold mb-6 text-center">Manage Your Profile</h1>
-            <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="mb-4">
                     <label className="block text-gray-700 font-bold mb-2" htmlFor="full_name">
                         Full Name
@@ -145,18 +145,16 @@ export default function ManagePersonalProfilePage() {
                 <div className="flex items-center justify-between">
                     <button
                         type="submit"
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     >
                         Update Profile
                     </button>
+                    <Link href="/">
+                        <a className="text-blue-500 hover:text-blue-600">Back to Home</a>
+                    </Link>
                 </div>
             </form>
-            {error && <p className="text-red-500">{error}</p>}
-            <div className="mt-4 text-center">
-                <Link href="/">
-                    <a className="text-blue-500">Back to Home</a>
-                </Link>
-            </div>
+            {error && <p className="text-red-500 mt-4">{error}</p>}
         </div>
     );
 }
