@@ -11,9 +11,9 @@ export default function App() {
                     <div className="flex flex-col items-center justify-center">
                         <h1 className="text-4xl font-bold mb-6">Welcome to HangUp</h1>
                         <div className="space-x-4">
-                            <Link href="/twilio">
+                            <Link href="/auth">
                                 <a className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
-                                    Create Account Using Twilio
+                                    Create Account or Login
                                 </a>
                             </Link>
                             <Link href="/manage">

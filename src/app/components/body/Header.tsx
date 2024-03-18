@@ -11,9 +11,9 @@ export default function Header() {
             <nav>
                 <ul className="flex space-x-4 items-center">
                     <li>
-                        <Link href="/twilio">
+                        <Link href="/auth">
                             <a className="px-4 py-2 hover:text-gray-300 rounded-md">
-                                Manage Twilio Preferences
+                                Manage Account Preferences
                             </a>
                         </Link>
                     </li>
@@ -41,9 +41,9 @@ export default function Header() {
                             </button>
                         </li>
                     ) : (
-                        <Link href="/twilio">
+                        <Link href="/auth">
                             <a className="px-4 py-2 hover:text-gray-300 rounded-md bg-gray-700">
-                                Login with Twilio
+                                Login or Signup
                             </a>
                         </Link>
                     )}

@@ -10,6 +10,7 @@ export default function ManageCallSettingsPage() {
         opening_line: '',
         closing_line: '',
     })
+    const [availableNumbers, setAvailableNumbers] = useState([]);
     const [error, setError] = useState('');
     const router = useRouter();
 
@@ -18,6 +19,10 @@ export default function ManageCallSettingsPage() {
             axios.get(`https://hang-up-c98880200178.herokuapp.com/api/call-settings/${userId}`)
                 .then(response => setCallSettings(response.data))
                 .catch(error => setError('Failed to fetch call settings'));
+
+            axios.get('https://hang-up-c98880200178.herokuapp.com/api/twilio/get-available-numbers')
+                .then(response => setAvailableNumbers(response.data))
+                .catch(error => setError('Failed to fetch available numbers'));
         }
     }, [userId]);
 
@@ -98,6 +103,14 @@ export default function ManageCallSettingsPage() {
                     </Link>
                 </div>
             </form>
+            <div>
+                <h2 className="text-2xl font-bold mb-4 mt-8">Available Numbers</h2>
+                <ul>
+                    {availableNumbers.map((number: string) => (
+                        <li key={number}>{number}</li>
+                    ))}
+                </ul>
+            </div>
             {error && <p className="text-red-500 mt-4">{error}</p>}
         </div>
     );
